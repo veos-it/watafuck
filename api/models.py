@@ -26,3 +26,12 @@ class Advantage(models.Model):
         verbose_name_plural = 'Преимущества'
 
 
+class Application(models.Model):
+    name = models.CharField(max_length=25, verbose_name='Имя')
+    phone = models.CharField(max_length=13, verbose_name='Номер телефона')
+    email = models.EmailField(verbose_name='E-mail')
+    comment = models.TextField(verbose_name='Комментарий')
+
+    class Meta:
+        verbose_name = 'Заявки'
+        verbose_name_plural = 'Заявка'

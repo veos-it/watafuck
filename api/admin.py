@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 # Register your models here.
 
-from .models import Partner, Advantage
+from .models import Partner, Advantage, Application
 
 
 class PartnerAdmin(admin.ModelAdmin):
@@ -33,5 +33,11 @@ class AdvantageAdmin(admin.ModelAdmin):
     get_img.short_description = 'Иконка'
 
 
+class ApplicationAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'email', 'comment')
+    list_display_links = ('email',)
+
+
+admin.site.register(Application, ApplicationAdmin)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(Advantage, AdvantageAdmin)
