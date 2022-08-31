@@ -157,5 +157,6 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:8000',
     'http://localhost:8080',
     'http://46.138.145.165:8080',
-    'https://46.138.145.165:8080'
+    'https://46.138.145.165:8080',
+    'https://kaleidoscopic-daffodil-7029fb.netlify.app',
 ]
