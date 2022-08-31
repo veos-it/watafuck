@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Partner, Advantage, Application
+from .models import Partner, Advantage, Application, Review
 
 
 class PartnerSerializer(ModelSerializer):
@@ -18,3 +18,9 @@ class ApplicationSerializer(ModelSerializer):
     class Meta:
         model = Application
         fields = '__all__'
+
+
+class ReviewsSerializer(ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ['name', 'text']

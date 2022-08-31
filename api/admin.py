@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 # Register your models here.
 
-from .models import Partner, Advantage, Application
+from .models import Partner, Advantage, Application, Review
 
 
 class PartnerAdmin(admin.ModelAdmin):
@@ -38,6 +38,20 @@ class ApplicationAdmin(admin.ModelAdmin):
     list_display_links = ('email',)
 
 
+class ReviewsAdmin(admin.ModelAdmin):
+    list_display = ('name', 'img', 'text', 'is_published', 'get_img')
+    list_editable = ('is_published',)
+
+    def get_img(self, obj):
+        if obj.img:
+            return mark_safe(f'<img src="{ obj.img.url }" width="75">')
+        else:
+            return 'Фото не установлено'
+
+    get_img.short_description = 'Фото'
+
+
+admin.site.register(Review, ReviewsAdmin)
 admin.site.register(Application, ApplicationAdmin)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(Advantage, AdvantageAdmin)

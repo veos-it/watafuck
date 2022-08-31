@@ -35,3 +35,14 @@ class Application(models.Model):
     class Meta:
         verbose_name = 'Заявки'
         verbose_name_plural = 'Заявка'
+
+
+class Review(models.Model):
+    img = models.ImageField(upload_to='review', verbose_name='Фото')
+    name = models.CharField(max_length=30, verbose_name='Имя')
+    text = models.TextField(verbose_name='Отзыв')
+    is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
+
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'

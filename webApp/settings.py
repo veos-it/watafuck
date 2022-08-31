@@ -146,7 +146,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
+STATIC_URL = '/staticfiles/'
 django_heroku.settings(locals())
 
 # CORS_ALLOWED_ORIGINS = True
@@ -158,5 +158,4 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:8080',
     'http://46.138.145.165:8080',
     'https://46.138.145.165:8080'
-
 ]

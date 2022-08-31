@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import Partner, Advantage, Application
+from .models import Partner, Advantage, Application, Review
 from rest_framework import status
-from .serializers import PartnerSerializer, AdvantageSerializer, ApplicationSerializer
+from .serializers import PartnerSerializer, AdvantageSerializer, ApplicationSerializer, ReviewsSerializer
 
 
 @api_view(['GET'])
 def getPartners(request):
-    partners = Partner.objects.all()
+    partners = Partner.objects.filter(is_published=True)
     serializer = PartnerSerializer(partners, many=True)
     return Response(serializer.data)
 
@@ -28,3 +28,10 @@ def createApplications(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def getReviews(request):
+    reviews = Review.objects.filter(is_published=True)
+    serializer = ReviewsSerializer(reviews, many=True)
+    return Response(serializer.data)
